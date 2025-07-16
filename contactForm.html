@@ -1,0 +1,316 @@
+{%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
+
+<style>
+  .contact-wrapper {
+    background-color: #ffffff;
+    padding: 60px 5vw;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #1f2937;
+  }
+
+  .contact-form-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .form-left {
+    min-width: 300px;
+  }
+
+  .form-section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0ea5e9;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .form-section-subtitle {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    text-align: left;
+    max-width: 600px;
+  }
+
+  .form-right {
+    background: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-info-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0ea5e9;
+  }
+
+  .contact-info-text {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 16px;
+    color: #374151;
+  }
+
+  .contact-info-item svg {
+    width: 22px;
+    height: 22px;
+    color: #0ea5e9;
+    flex-shrink: 0;
+  }
+
+  .contact-info-item a {
+    color: #0ea5e9;
+    text-decoration: none;
+  }
+
+  .contact-info-item a:hover {
+    text-decoration: underline;
+  }
+
+  .rs-contact-form input,
+  .rs-contact-form textarea,
+  .rs-contact-form select {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #1f2937;
+    font-family: 'Helvetica Neue', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .rs-contact-form input:focus,
+  .rs-contact-form textarea:focus,
+  .rs-contact-form select:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  }
+
+  .rs-contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /* Make button selector more specific to override Shopify system styles */
+  .rs-contact-form button,
+  .rs-contact-form [type="submit"],
+  .rs-contact-form .shopify-payment-button__button {
+    background-color: #0ea5e9 !important;
+    color: #fff !important;
+    padding: 14px 28px;
+    font-size: 16px;
+    border: 2px solid #0ea5e9 !important;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
+  .rs-contact-form button:hover,
+  .rs-contact-form [type="submit"]:hover,
+  .rs-contact-form .shopify-payment-button__button:hover {
+    background-color: #fff !important;
+    color: #0ea5e9 !important;
+    border: 2px solid #0ea5e9 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+  }
+
+  .fieldset-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .contact-form-columns {
+      grid-template-columns: 1fr;
+    }
+
+    .form-right {
+      margin-top: 40px;
+    }
+
+    .fieldset-row {
+      grid-template-columns: 1fr;
+    }
+
+    .form-section-title {
+      font-size: 28px;
+    }
+  }
+
+  .contact-socials {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .contact-socials-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0ea5e9;
+    margin-bottom: 2px;
+  }
+  .contact-socials-text {
+    font-size: 15px;
+    color: #64748b;
+    margin-bottom: 8px;
+  }
+  .contact-socials-icons {
+    display: flex;
+    gap: 18px;
+    margin-top: 4px;
+  }
+  .contact-social-icon {
+    color: #0ea5e9;
+    transition: color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+  }
+  .contact-social-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .contact-social-icon:hover {
+    color: #111827;
+    transform: translateY(-2px) scale(1.12);
+    text-decoration: none;
+  }
+</style>
+
+<section class="contact-wrapper" id="contact-form">
+  <div class="contact-form-columns">
+    <div class="form-left">
+      <h2 class="form-section-title">Get in Touch</h2>
+      <p class="form-section-subtitle">
+        Ready to shape your perfect board? Drop us a line and let's start crafting your dream ride.
+      </p>
+
+      {%- form 'contact', class: 'form rs-contact-form' -%}
+        {%- if form.posted_successfully? -%}
+          {%- assign content = 'contact.form.success_message' | t -%}
+          {%- render 'banner', status: 'success', content: content -%}
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          {%- capture content -%}{{ form.errors.translated_fields[form.errors.first] | capitalize }} {{ form.errors.messages[form.errors.first] }}{%- endcapture -%}
+          {%- render 'banner', status: 'error', content: content -%}
+        {%- endif -%}
+
+        <div class="fieldset">
+          <div class="fieldset-row">
+            {%- assign label  = 'contact.form.name' | t -%}
+            {%- render 'input', type: 'text', name: 'contact[name]', label: label, value: customer.name, required: true, autocomplete: 'name' -%}
+
+            {%- assign label  = 'contact.form.email' | t -%}
+            {%- render 'input', type: 'email', name: 'contact[email]', label: label, value: customer.email, required: true, autocomplete: 'email' -%}
+          </div>
+
+          {%- for block in section.blocks -%}
+            {%- assign field_title = block.settings.title | default: 'Custom field' -%}
+            {%- capture name -%}contact[{{ field_title | escape }}]{%- endcapture -%}
+            {%- if block.type == 'text' -%}
+              {%- if block.settings.use_long_text -%}
+                {%- render 'input', name: name, label: block.settings.title, required: block.settings.required, multiline: 4 -%}
+              {%- else -%}
+                {%- render 'input', type: 'text', name: name, label: block.settings.title, required: block.settings.required -%}
+              {%- endif -%}
+            {%- elsif block.type == 'dropdown' and block.settings.values != blank -%}
+              {%- assign values = block.settings.values | split: ',' -%}
+              {%- render 'select', option_values: values, show_empty_value: true, name: name, label: block.settings.title, required: true -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- assign label = 'contact.form.message' | t -%}
+          {%- render 'input', name: 'contact[body]', label: label, multiline: 4, required: true -%}
+        </div>
+
+        {%- assign button_content = 'contact.form.submit' | t -%}
+        {%- render 'button', content: button_content, type: 'submit' -%}
+      {%- endform -%}
+    </div>
+
+    <div class="form-right">
+      <h3 class="contact-info-title">Contact Information</h3>
+      <p class="contact-info-text">
+        Reach out anytime — we love talking boards, surf spots, or helping you design your next custom shape.
+      </p>
+
+      <div class="contact-info-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <a href="tel:+1234567890">+1 (234) 567-890</a>
+      </div>
+
+      <div class="contact-info-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <a href="mailto:info@rssurf.com">info@rssurf.com</a>
+      </div>
+
+      <div class="contact-info-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <span>123 Surf Lane, Encinitas, CA</span>
+      </div>
+
+      <div class="contact-socials">
+        <div class="contact-socials-title">Follow Us</div>
+        <div class="contact-socials-text">Stay connected for the latest boards, surf stories, and shop updates.</div>
+        <div class="contact-socials-icons">
+          <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram" class="contact-social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener" aria-label="Facebook" class="contact-social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener" aria-label="Twitter" class="contact-social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+            </svg>
+          </a>
+          <a href="https://youtube.com/yourprofile" target="_blank" rel="noopener" aria-label="YouTube" class="contact-social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+              <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

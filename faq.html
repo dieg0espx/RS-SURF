@@ -1,0 +1,311 @@
+<style>
+  .faq-section {
+    color: #1f2937;
+    font-family: 'Helvetica Neue', sans-serif;
+    padding: 100px 24px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.02) 0%, rgba(2, 132, 199, 0.02) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .faq-title {
+    font-size: clamp(32px, 4vw, 48px);
+    text-align: center;
+    font-weight: 700;
+    color: #0ea5e9;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: block;
+    padding-bottom: 16px;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .faq-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0ea5e9, #0284c7);
+    border-radius: 2px;
+  }
+
+  .faq-subtitle {
+    text-align: center;
+    font-size: clamp(18px, 2vw, 20px);
+    color: #64748b;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .faq-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .faq-item {
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
+    position: relative;
+  }
+
+  .faq-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0ea5e9, #0284c7);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .faq-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.2);
+  }
+
+  .faq-item:hover::before {
+    transform: scaleX(1);
+  }
+
+  .faq-item.open {
+    border-color: rgba(14, 165, 233, 0.3);
+    box-shadow: 0 8px 30px rgba(14, 165, 233, 0.12);
+  }
+
+  .faq-item.open::before {
+    transform: scaleX(1);
+  }
+
+  .faq-question {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 24px 28px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    text-align: left;
+    font-size: 18px;
+    color: #1f2937;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    min-height: 60px;
+  }
+
+  .faq-question:hover {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    color: #0ea5e9;
+  }
+
+  .faq-question::after {
+    content: '+';
+    position: relative;
+    font-size: 20px;
+    font-weight: 400;
+    color: #0ea5e9;
+    transition: all 0.4s ease;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(14, 165, 233, 0.1);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-question::after {
+    content: '–';
+    transform: rotate(180deg);
+    background: rgba(14, 165, 233, 0.2);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 28px;
+    color: #475569;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: left;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.02) 0%, rgba(2, 132, 199, 0.02) 100%);
+    position: relative;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 500px;
+    padding: 20px 28px 28px;
+  }
+
+  .faq-answer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+  }
+
+  @media (min-width: 768px) {
+    .faq-grid {
+      flex-direction: row;
+      gap: 40px;
+    }
+
+    .faq-column {
+      width: 50%;
+    }
+
+    .faq-section {
+      padding: 120px 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-section {
+      padding: 80px 20px;
+    }
+
+    .faq-question {
+      padding: 20px 24px;
+      font-size: 16px;
+    }
+
+    .faq-answer {
+      padding: 0 24px;
+      font-size: 15px;
+    }
+
+    .faq-item.open .faq-answer {
+      padding: 16px 24px 24px;
+    }
+  }
+
+  /* Animation for fade-in */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .fade-in.delay-3 { 
+    animation-delay: 0.6s; 
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<section class="faq-section fade-in delay-3">
+  <div class="faq-container">
+    <h2 class="faq-title">FAQs</h2>
+    <p class="faq-subtitle">Your questions answered. Everything you need to know about Resin Services.</p>
+
+    <div class="faq-grid">
+      <!-- Column 1 -->
+      <div class="faq-column">
+        <div class="faq-item">
+          <div class="faq-question">What is Resin Services?</div>
+          <div class="faq-answer">Resin Services is a surf-focused brand born in San Clemente, CA. We support surfers by building boards, offering services, and sharing the stoke of the ride.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Do you ship internationally?</div>
+          <div class="faq-answer">Yes, we offer international shipping for select products. Please contact our support for detailed options and timelines for your region.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How can I order a custom board?</div>
+          <div class="faq-answer">Just reach out through our contact page or visit our shop. Our team will guide you through shape, size, and material options for your dream board.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I visit your workshop?</div>
+          <div class="faq-answer">Absolutely! Our shop is open to visitors. Come meet the crew, see our boards in the making, and talk story with fellow surfers.</div>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="faq-column">
+        <div class="faq-item">
+          <div class="faq-question">Glassing and CNC</div>
+          <div class="faq-answer">Resin Services offers glassing and board building services to the public!</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What's the turnaround time for custom boards?</div>
+          <div class="faq-answer">Turnaround time typically ranges from 3–5 weeks depending on demand and customization level. We'll keep you updated every step of the way.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Do you repair surfboards?</div>
+          <div class="faq-answer">Yes, we offer repairs on dings, cracks, and other surfboard damages. Just bring your board in and we'll give you an honest assessment.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I get a tour of your glass shop?</div>
+          <div class="faq-answer">Definitely. We love showing people the craft behind our boards. Just call ahead so we can give you the best experience possible.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', function() {
+        // Close all other FAQ items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('open');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('open');
+      });
+    });
+  });
+</script>

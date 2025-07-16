@@ -1,0 +1,87 @@
+<style>
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+  
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .footer-link:hover {
+      color: #0ea5e9;
+      transition: color 0.3s ease;
+    }
+  
+    @media (min-width: 768px) {
+      .footer-columns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+  
+      .quick-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        gap: 10px 30px;
+      }
+    }
+  </style>
+  
+  <footer style="background-color: #ffffff; padding: 60px 5vw 30px; font-family: 'Helvetica Neue', sans-serif; color: #1f2937; text-align: left;" class="fade-in-up">
+  
+    <div class="footer-columns" style="max-width: 1600px; margin: 0 auto;">
+  
+      <!-- Brand + Social -->
+      <div style="flex: 1; min-width: 200px;">
+        <img src="https://cdn.shopify.com/s/files/1/0049/1071/0882/files/MAIN_LOGO.jpg?v=1752673608" alt="RS SURF" style="max-width: 120px; height: auto; margin-bottom: 10px;">
+        <p style="font-size: 15px; color: #64748b; margin-bottom: 20px;">
+          Hand-shaped boards, glass shop roots, and a passion for the ride — born in San Clemente.
+        </p>
+        <div style="display: flex; gap: 12px;">
+          
+        </div>
+      </div>
+  
+      <!-- Quick Links -->
+      <div style="flex: 1; min-width: 200px;">
+        <ul class="quick-links" style="list-style: none; padding: 0; font-size: 16px; line-height: 1.8; margin: 0;">
+          <li><a href="/pages/about-us" class="footer-link" style="text-decoration: none; color: #1f2937;">About Us</a></li>
+          <li><a href="/collections/boards" class="footer-link" style="text-decoration: none; color: #1f2937;">Boards</a></li>
+          <li><a href="/pages/contact" class="footer-link" style="text-decoration: none; color: #1f2937;">Contact</a></li>
+          <li><a href="/blogs/news" class="footer-link" style="text-decoration: none; color: #1f2937;">Journal</a></li>
+          <li><a href="/pages/faq" class="footer-link" style="text-decoration: none; color: #1f2937;">FAQ</a></li>
+          <li><a href="/pages/shipping" class="footer-link" style="text-decoration: none; color: #1f2937;">Shipping Info</a></li>
+        </ul>
+      </div>
+  
+      <!-- Contact (clean layout) -->
+      <div style="flex: 1; min-width: 200px;">
+        <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+          San Clemente, California<br>
+          <a href="tel:+1234567890" style="text-decoration: none; color: #1f2937;">+1 (234) 567-890</a><br>
+          <a href="mailto:info@rssurf.com" style="text-decoration: none; color: #1f2937;">info@rssurf.com</a>
+        </p>
+      </div>
+  
+      <!-- Secure Payments (Title + Subtitle + Image) -->
+      <div style="flex: 1; min-width: 200px;">
+        <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Secure Payments</h4>
+        <p style="font-size: 14px; color: #64748b; margin-bottom: 16px;">We accept safe & encrypted payment methods.</p>
+        <img src="https://cdn.shopify.com/s/files/1/0049/1071/0882/files/2024_Services_Payments_M03-7_Header_D_copy.png?v=1752248804" alt="Secure Payments" style="width: 100%; max-width: 250px; border-radius: 8px; ">
+      </div>
+  
+    </div>
+  
+    <!-- Divider -->
+    <div style="margin-top: 40px; height: 1px; background-color: #e2e8f0;"></div>
+  
+    <!-- Bottom Bar -->
+    <div style="margin-top: 20px; font-size: 14px; color: #94a3b8;">
+      &copy; 2025 RS SURF. All rights reserved.
+    </div>
+  </footer>

@@ -1,0 +1,326 @@
+<style>
+  .testimonials-wrapper {
+    padding: 0px 10px;
+    width: 100%;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #1f2937;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonials-title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #0ea5e9;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: block;
+    padding-bottom: 16px;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .testimonials-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0ea5e9, #0284c7);
+    border-radius: 2px;
+  }
+
+  .testimonials-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    font-size: clamp(18px, 2vw, 20px);
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  .testimonials-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+    padding: 20px 0;
+  }
+
+  .testimonial-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
+    padding: 32px 28px;
+    width: 380px;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0ea5e9, #0284c7);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.2);
+  }
+
+  .testimonial-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .testimonial-stars {
+    color: #fbbf24;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .testimonial-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #374151;
+    margin-bottom: 24px;
+    position: relative;
+    padding-left: 24px;
+    text-align: left;
+    font-style: italic;
+    min-height: 120px;
+  }
+
+  .testimonial-text::before {
+    content: "\201C";
+    position: absolute;
+    left: 0;
+    top: -8px;
+    font-size: 40px;
+    color: #0ea5e9;
+    font-family: 'Georgia', serif;
+    opacity: 0.8;
+  }
+
+  .testimonial-footer {
+    border-top: 1px solid rgba(14, 165, 233, 0.1);
+    padding-top: 16px;
+    text-align: left;
+  }
+
+  .testimonial-name {
+    font-weight: 600;
+    color: #0ea5e9;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .testimonial-location {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .testimonials-scroll {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .testimonials-scroll::before,
+  .testimonials-scroll::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .testimonials-scroll::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), transparent);
+  }
+
+  .testimonials-scroll::after {
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9));
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-card {
+      width: 320px;
+      padding: 24px 20px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      padding-left: 20px;
+      min-height: 100px;
+    }
+
+    .testimonial-text::before {
+      font-size: 32px;
+    }
+
+    .testimonials-track {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonials-wrapper {
+      padding: 80px 20px;
+    }
+
+    .testimonial-card {
+      width: 280px;
+      padding: 20px 16px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      padding-left: 18px;
+    }
+
+    .testimonial-text::before {
+      font-size: 28px;
+    }
+  }
+
+  /* Animation for fade-in */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .fade-in.delay-3 { 
+    animation-delay: 0.6s; 
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<section class="testimonials-wrapper fade-in delay-3">
+  <div class="testimonials-container">
+    <h2 class="testimonials-title">Testimonials</h2>
+    <p class="testimonials-subtitle">
+      Real words from real riders who've surfed with our boards — shaped to perform, built to last.
+    </p>
+    
+    <div class="testimonials-scroll">
+      <div class="testimonials-track" id="testimonial-track">
+        <!-- Testimonials will be injected here -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const testimonials = `
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        The board I got from RS SURF changed my entire surf experience. It handles like a dream on turns,
+        holds on steep drops, and paddles better than any board I've owned. The craftsmanship is next level.
+      </p>
+      <div class="testimonial-footer">
+        <div class="testimonial-name">Jason M.</div>
+        <div class="testimonial-location">Encinitas, CA</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        From the moment I walked into the shop, I felt the passion behind the brand. My board was custom-shaped
+        with care and it shows — perfect balance, flex, and a killer ride on both beach breaks and points.
+      </p>
+      <div class="testimonial-footer">
+        <div class="testimonial-name">Amelia R.</div>
+        <div class="testimonial-location">Santa Cruz, CA</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        You don't just buy a board from RS SURF — you become part of the crew. They listened to what I needed,
+        built me a board that matched my style, and I'm surfing better than ever.
+      </p>
+      <div class="testimonial-footer">
+        <div class="testimonial-name">Lucas D.</div>
+        <div class="testimonial-location">Malibu, CA</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        Everything from the first consult to the final wax felt dialed in. I took my new board out last week
+        and got the best session of the year. Responsive, fast, and beautifully glassed — thanks RS SURF!
+      </p>
+      <div class="testimonial-footer">
+        <div class="testimonial-name">Sofia L.</div>
+        <div class="testimonial-location">San Clemente, CA</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        I've been surfing for over a decade and this is the first time I felt like my board was truly made for me.
+        RS SURF brought my vision to life and I'll never go anywhere else again.
+      </p>
+      <div class="testimonial-footer">
+        <div class="testimonial-name">Mark T.</div>
+        <div class="testimonial-location">Oceanside, CA</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        The attention to detail is incredible. Every curve, every fin placement was thought through. 
+        This board has become an extension of my surfing style. RS SURF knows what they're doing.
+      </p>
+      <div class="testimonial-footer">
+        <div class="testimonial-name">Sarah K.</div>
+        <div class="testimonial-location">Dana Point, CA</div>
+      </div>
+    </div>
+  `;
+
+  const track = document.getElementById("testimonial-track");
+  track.innerHTML = testimonials + testimonials; // Double for seamless looping
+</script>
